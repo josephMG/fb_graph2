@@ -23,9 +23,7 @@ module FbGraph2
     end
 
     def access_token!(options = {})
-      super options.merge(
-        client_auth_method: :body
-      )
+      super options, client_auth_method: :body
     rescue Rack::OAuth2::Client::Error => e
       raise Exception.detect_from_status(detect_from_status).new(e.message)
     end
